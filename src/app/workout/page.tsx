@@ -1,6 +1,12 @@
-import React from 'react';
 
-const page = () => {
+
+'use client';
+import { MuscleContext } from '@/context/MuscleContext';
+import React, { useContext } from 'react';
+
+const WorkoutMuscles = () => {
+    const {plan, save} = useContext(MuscleContext);
+    console.log(plan, save);
     return (
         <div>
             WorkOut Page
@@ -8,4 +14,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default WorkoutMuscles;

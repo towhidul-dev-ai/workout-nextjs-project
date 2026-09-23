@@ -1,4 +1,6 @@
 
+import SaveListButton from '@/components/muscleDetails/SaveLaterButton';
+import TodayPlanButton from '@/components/muscleDetails/TodayPlanButton';
 import type { IMuscle } from '@/types/muscle.type';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -191,13 +193,9 @@ const MuscleDetailsPage = async ({params}: IMuscleDetailsPageProps) => {
             {/* Buttons */}
             <div className="mt-6 flex flex-wrap gap-3">
 
-              <button className="btn min-h-0 h-auto border-0 bg-[#ccff00] px-5 py-3 text-xs font-bold text-black hover:bg-[#b8e600]">
-                🗓 Add to today's plan
-              </button>
+              <TodayPlanButton muscle={muscle}></TodayPlanButton>
 
-              <button className="btn min-h-0 h-auto border border-[#30343b] bg-transparent px-5 py-3 text-xs font-medium text-gray-300 hover:border-gray-500 hover:bg-transparent">
-                ♡ Save for later
-              </button>
+              <SaveListButton muscle={muscle}></SaveListButton>
 
             </div>
 
