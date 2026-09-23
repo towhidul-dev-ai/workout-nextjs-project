@@ -8,7 +8,7 @@ interface IMuscleCardProps {
 
 const MuscleCard = ({ muscle }: IMuscleCardProps) => {
   return (
-    <Link href={`/workout/${muscle.id}`}>
+    <Link href={`/myplan/${muscle.id}`}>
       <article className="group overflow-hidden rounded-xl border border-[#25282e] bg-[#15171c] transition-all duration-300 hover:-translate-y-1 hover:border-[#ccff00]/40">
 
         {/* Image */}
