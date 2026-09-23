@@ -1,9 +1,12 @@
+import Banner from '@/components/homepage/Banner';
+import Muscle from '@/components/homepage/Muscle';
 import React from 'react';
 
 const page = () => {
   return (
     <div>
-      <h2>HomePage</h2>
+      <Banner></Banner>
+      <Muscle></Muscle>
     </div>
   );
 };

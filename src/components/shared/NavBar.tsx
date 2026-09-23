@@ -5,7 +5,7 @@ import logo from '@/assets/logo.png'
 
 const Navbar = () => {
   return (
-    <nav className="border-b border-[#202329] bg-[#0b0c0f]">
+    <nav className="border-b border-[#1C1F26] bg-[#000000]">
       <div className="mx-auto flex min-h-[62px] max-w-[1400px] items-center justify-between px-5 lg:px-8">
 
         {/* Logo */}
@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="hidden items-center gap-2 md:flex">
           <Link
             href="/"
-            className="rounded-full bg-[#182100] px-5 py-2 text-xs font-medium text-[#ccff00]"
+            className="rounded-full bg-[#1A2312] px-5 py-2 text-xs font-medium text-[#C2F800]"
           >
             Workouts
           </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
       <div className="flex justify-center gap-2 border-t border-[#202329] py-3 md:hidden">
         <Link
           href="/"
-          className="rounded-full bg-[#182100] px-5 py-2 text-xs font-medium text-[#ccff00]"
+          className="rounded-full bg-[#1A2312] px-5 py-2 text-xs font-medium text-[#C2F800]"
         >
           Workouts
         </Link>
