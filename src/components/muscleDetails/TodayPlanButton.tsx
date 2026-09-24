@@ -26,12 +26,6 @@ const TodayPlanButton = ({ muscle }: { muscle: IMuscle }) => {
       return;
     }
 
-    // Maximum 5 workouts
-    if (plan.length >= 5) {
-      toast.error("Today's plan can contain maximum 5 workouts.");
-      return;
-    }
-
     setPlan((previousPlan) => [
       ...previousPlan,
       muscle,

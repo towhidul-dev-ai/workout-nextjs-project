@@ -27,27 +27,9 @@ const MyPlanContent = () => {
     "duration" | "calories" | "rating"
   >("duration");
 
-  /*
-   * Decide which list we are currently displaying.
-   *
-   * Today's Plan → plan
-   * Saved → save
-   */
   const currentList: IMuscle[] =
     activeTab === "plan" ? plan : save;
 
-  /*
-   * SORTING
-   *
-   * Duration:
-   * Highest duration → lowest duration
-   *
-   * Calories:
-   * Highest calories → lowest calories
-   *
-   * Rating:
-   * Highest rating → lowest rating
-   */
   const sortedList = useMemo(() => {
     const copiedList = [...currentList];
 
@@ -70,9 +52,7 @@ const MyPlanContent = () => {
     return copiedList;
   }, [currentList, sortBy]);
 
-  /*
-   * Remove from Today's Plan
-   */
+//    Remove from Today's Plan 
   const handleRemovePlan = (id: number) => {
     setPlan(
       plan.filter(
@@ -85,9 +65,8 @@ const MyPlanContent = () => {
     );
   };
 
-  /*
-   * Remove from Saved
-   */
+    // Remove from Saved
+   
   const handleRemoveSave = (id: number) => {
     setSave(
       save.filter(
@@ -100,9 +79,9 @@ const MyPlanContent = () => {
     );
   };
 
-  /*
-   * Mark as Done
-   */
+  
+    // Mark as Done
+   
   const handleDone = (id: number) => {
     setPlan(
       plan.filter(
@@ -184,10 +163,10 @@ const MyPlanContent = () => {
 
 
           {/* ================= CARDS ================= */}
-          {sortedList.map((muscle, index) => (
+          {sortedList.map((muscle, ind) => (
 
             <div
-              key={`${muscle.id}-${index}`}
+              key={`${muscle.id}-${ind}`}
               className="flex flex-col gap-5 rounded-xl border border-[#292d34] bg-[#15171c] p-4 transition hover:border-[#3b4048] md:flex-row md:items-center"
             >
 

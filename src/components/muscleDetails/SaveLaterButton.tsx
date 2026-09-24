@@ -20,7 +20,7 @@ const SaveLaterButton = ({ muscle }: { muscle: IMuscle }) => {
     );
 
     if (alreadySaved) {
-      toast.info(`"${muscle.name}" is already saved.`);
+      toast.error(`"${muscle.name}" is already saved.`);
       return;
     }
 
