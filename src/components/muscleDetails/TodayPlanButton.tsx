@@ -1,29 +1,53 @@
-'use client';
-import { MuscleContext } from '@/context/MuscleContext';
-import type { IMuscle } from '@/types/muscle.type';
-import React, { useContext } from 'react';
+"use client";
 
-const TodayPlanButton = ({muscle}: {muscle: IMuscle}) => {
+import { MuscleContext } from "@/components/context/MuscleContext";
+import type { IMuscle } from "@/types/muscle.type";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 
-    const {plan, setPlan} = useContext(MuscleContext);
+const TodayPlanButton = ({ muscle }: { muscle: IMuscle }) => {
+  const context = useContext(MuscleContext);
 
-    const musclesProvider = useContext(MuscleContext);
+  if (!context) {
+    throw new Error("TodayPlanButton must be inside MuscleProvider");
+  }
 
-    console.log(musclesProvider, "musclesprovider");
+  const { plan, setPlan } = context;
 
-    const handleTodayPlan = ()=>{
-        console.log("today plan button trigerred", muscle);
-        setPlan([...plan, muscle]);
-        alert(`you have read "${muscle.name}"`)
-    }
-    return (
-        <div>
-            <button className="btn min-h-0 h-auto border-0 bg-[#ccff00] px-5 py-3 text-xs font-bold text-black hover:bg-[#b8e600]"
-             onClick={()=>handleTodayPlan()}>
-                🗓 Add to today's plan
-              </button>
-        </div>
+  const handleTodayPlan = () => {
+    // Prevent duplicate workout
+    const alreadyExists = plan.some(
+      (item) => item.id === muscle.id
     );
+
+
+    if (alreadyExists) {
+      toast.error(`${muscle.name} is already in today's plan.`);
+      return;
+    }
+
+    // Maximum 5 workouts
+    if (plan.length >= 5) {
+      toast.error("Today's plan can contain maximum 5 workouts.");
+      return;
+    }
+
+    setPlan((previousPlan) => [
+      ...previousPlan,
+      muscle,
+    ]);
+
+    toast.success(`"${muscle.name}" added to today's plan.`);
+  };
+
+  return (
+    <button
+      className="btn min-h-0 h-auto border-0 bg-[#ccff00] px-5 py-3 text-xs font-bold text-black hover:bg-[#b8e600]"
+      onClick={handleTodayPlan}
+    >
+      🗓 Add to today's plan
+    </button>
+  );
 };
 
 export default TodayPlanButton;

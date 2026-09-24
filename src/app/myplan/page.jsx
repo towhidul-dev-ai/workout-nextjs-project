@@ -1,14 +1,7 @@
+import MyPlanContent from "@/components/myplan/MyPlanContent";
 
-
-import React from 'react';
-
-const page = () => {
-
-    return (
-        <div>
-            My plan is redering
-        </div>
-    );
+const MyPlan = () => {
+  return <MyPlanContent />;
 };
 
-export default page;
+export default MyPlan;
