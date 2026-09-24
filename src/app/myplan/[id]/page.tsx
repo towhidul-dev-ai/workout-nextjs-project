@@ -1,6 +1,7 @@
 
 import SaveListButton from '@/components/muscleDetails/SaveLaterButton';
 import TodayPlanButton from '@/components/muscleDetails/TodayPlanButton';
+import { getMuscle } from '@/lib/app';
 import type { IMuscle } from '@/types/muscle.type';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,19 +13,7 @@ interface IMuscleDetailsPageProps {
     }>;
 }
 
-const getMuscle = async () => {
-  const res = await fetch(
-    "https://api.abcz.workers.dev/api/fitlog"
-  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch workout data");
-  }
-
-  const data = await res.json();
-
-  return data;
-};
 
 const MuscleDetailsPage = async ({params}: IMuscleDetailsPageProps) => {
     const {id} = await params;

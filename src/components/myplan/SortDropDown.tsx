@@ -20,16 +20,14 @@ const SortDropdown = ({
 
       <select
         value={sortBy}
-        onChange={(e) =>
-          setSortBy(
-            e.target.value as
-              | "duration"
-              | "calories"
-              | "rating"
-          )
+        onChange={(e) => setSortBy(
+        e.target.value as
+        | "duration"
+        | "calories"
+        | "rating"
+        )
         }
-        className="rounded-lg border border-[#292d34] bg-[#15171c] px-3 py-2 text-xs text-white outline-none"
-      >
+        className="rounded-lg border border-[#292d34] bg-[#15171c] px-3 py-2 text-xs text-white outline-none">
         <option value="duration">
           Duration
         </option>

@@ -5,7 +5,7 @@ import bannerImg from '@/assets/banner.png'
 
 const Banner = () => {
   return (
-    <section className="mx-auto max-w-[1400px] px-4 pt-8 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-[1400px] px-5 pt-8 sm:px-6 lg:px-8">
 
       <div className="relative overflow-hidden rounded-xl border border-[#292d34] bg-[#15171c]">
 

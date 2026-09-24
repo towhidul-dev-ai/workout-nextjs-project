@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { IMuscle } from "@/types/muscle.type";
-import { toast } from "react-toastify";
+
 
 interface PlanCardProps {
   muscle: IMuscle;

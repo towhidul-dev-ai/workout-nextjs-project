@@ -28,28 +28,19 @@
 import React from 'react';
 import MuscleCard from "@/components/shared/MuscleCard";
 import type { IMuscle } from '@/types/muscle.type';
+import { getMuscle } from '@/lib/app';
 
-const getMuscle = async () => {
-  const res = await fetch(
-    "https://api.abcz.workers.dev/api/fitlog"
-  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch workout data");
-  }
-
-  const data = await res.json();
-
-  return data;
-};
 
 const Muscles = async () => {
   const muscleData = await getMuscle();
+  const data = await getMuscle();
+  console.log(data);
 
   return (
     <section
       id="library"
-      className="container mx-auto my-[70px] px-4"
+      className="container mx-auto my-[70px] px-4 mx-auto max-w-[1400px] px-5 pt-8 sm:px-6 lg:px-8"
     >
       {/* Section heading */}
       <div className="mb-8">
@@ -68,9 +59,9 @@ const Muscles = async () => {
             </p>
           </div>
 
-          <p className="text-sm text-gray-500">
+          {/* <p className="text-sm text-gray-500">
             {muscleData.length} workouts
-          </p>
+          </p> */}
         </div>
       </div>
 

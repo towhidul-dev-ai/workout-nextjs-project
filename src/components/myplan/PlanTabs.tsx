@@ -84,8 +84,7 @@ const PlanTabs = ({
           activeTab === "save"
             ? "bg-[#20242c] text-white"
             : "text-gray-500 hover:text-white"
-        }`}
-      >
+        }`}>
         Saved
       </button>
     </div>

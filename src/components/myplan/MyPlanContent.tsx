@@ -98,7 +98,7 @@ const MyPlanContent = () => {
     <main className="min-h-screen bg-[#0b0c0f] px-5 py-10 text-white lg:px-8">
       <div className="mx-auto max-w-[1400px]">
 
-        {/* ================= HEADER ================= */}
+        {/*  HEADER  */}
         <div>
           <h1 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">
             MY PLAN
@@ -110,7 +110,7 @@ const MyPlanContent = () => {
         </div>
 
 
-        {/* ================= STATS ================= */}
+        {/*  STATS  */}
         <div className="mt-7">
           <PlanStats
             workouts={currentList}
@@ -118,7 +118,7 @@ const MyPlanContent = () => {
         </div>
 
 
-        {/* ================= TABS + SORT ================= */}
+        {/*  TABS + SORT  */}
         <div className="mt-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 
           {/* Tabs */}
@@ -136,10 +136,10 @@ const MyPlanContent = () => {
         </div>
 
 
-        {/* ================= WORKOUT LIST ================= */}
+        {/*  WORKOUT LIST  */}
         <div className="mt-5 space-y-3">
 
-          {/* ================= EMPTY STATE ================= */}
+          {/* EMPTY STATE  */}
           {sortedList.length === 0 && (
             <div className="rounded-xl border border-[#292d34] bg-[#15171c] px-5 py-16 text-center">
 
@@ -162,7 +162,7 @@ const MyPlanContent = () => {
           )}
 
 
-          {/* ================= CARDS ================= */}
+          {/*  CARDS  */}
           {sortedList.map((muscle, ind) => (
 
             <div
@@ -233,7 +233,7 @@ const MyPlanContent = () => {
               </div>
 
 
-              {/* ================= ACTIONS ================= */}
+              {/*  ACTIONS  */}
               <div className="flex flex-wrap items-center gap-2">
 
                 {/* View Details */}
@@ -245,7 +245,7 @@ const MyPlanContent = () => {
                 </Link>
 
 
-                {/* ================= TODAY'S PLAN ================= */}
+                {/*  TODAY'S PLAN  */}
                 {activeTab === "plan" && (
                   <>
                     {/* Mark as Done */}
@@ -276,7 +276,7 @@ const MyPlanContent = () => {
                 )}
 
 
-                {/* ================= SAVED ================= */}
+                {/*  SAVED */}
                 {activeTab === "save" && (
                   <button
                     type="button"
