@@ -19,6 +19,12 @@ const TodayPlanButton = ({ muscle }: { muscle: IMuscle }) => {
     const alreadyExists = plan.some(
       (item) => item.id === muscle.id
     );
+    
+    if (plan.length >= 5) {
+      toast.error("Today's plan can contain maximum 5 workouts.");
+      return;
+    }
+
 
 
     if (alreadyExists) {
