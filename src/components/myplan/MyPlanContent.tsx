@@ -259,7 +259,7 @@ const MyPlanContent = () => {
 
                 {/* View Details */}
                 <Link
-                  href={`/workout/${muscle.id}`}
+                  href={`/myplan/${muscle.id}`}
                   className="rounded-lg border border-[#30343b] px-4 py-2 text-xs font-medium text-gray-300 transition hover:border-gray-500 hover:text-white"
                 >
                   View Details
