@@ -1,18 +1,20 @@
 "use client";
 
-import React, {
+import {
   createContext,
   useState,
   type ReactNode,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 
 import type { IMuscle } from "@/types/muscle.type";
 
 interface IMuscleContext {
   plan: IMuscle[];
-  setPlan: React.Dispatch<React.SetStateAction<IMuscle[]>>;
+  setPlan: Dispatch<SetStateAction<IMuscle[]>>;
   save: IMuscle[];
-  setSave: React.Dispatch<React.SetStateAction<IMuscle[]>>;
+  setSave: Dispatch<SetStateAction<IMuscle[]>>;
 }
 
 export const MuscleContext = createContext<IMuscleContext | undefined>(

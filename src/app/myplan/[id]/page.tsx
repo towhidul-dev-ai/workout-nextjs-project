@@ -13,7 +13,14 @@ interface IMuscleDetailsPageProps {
     }>;
 }
 
+export async function generateStaticParams() {
 
+  const muscleData = await getMuscle();
+  const muscleId = muscleData.map((muscle: IMuscle)=>{
+    return {id: muscle.id.toString()};
+  });
+  return muscleId;
+}
 
 const MuscleDetailsPage = async ({params}: IMuscleDetailsPageProps) => {
     const {id} = await params;

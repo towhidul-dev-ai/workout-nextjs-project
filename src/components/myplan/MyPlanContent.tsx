@@ -12,12 +12,20 @@ import PlanTabs, { PlanStats } from "./PlanTabs";
 import SortDropdown from "./SortDropDown";
 
 const MyPlanContent = () => {
+  const context = useContext(MuscleContext);
+
+  if (!context) {
+    throw new Error(
+      "MyPlanContent must be used inside MuscleProvider"
+    );
+  }
+
   const {
     plan,
     setPlan,
     save,
     setSave,
-  } = useContext(MuscleContext);
+  } = context;
 
   const [activeTab, setActiveTab] = useState<
     "plan" | "save"
@@ -29,6 +37,7 @@ const MyPlanContent = () => {
 
   const currentList: IMuscle[] =
     activeTab === "plan" ? plan : save;
+
 
   const sortedList = useMemo(() => {
     const copiedList = [...currentList];
@@ -52,7 +61,7 @@ const MyPlanContent = () => {
     return copiedList;
   }, [currentList, sortBy]);
 
-//    Remove from Today's Plan 
+
   const handleRemovePlan = (id: number) => {
     setPlan(
       plan.filter(
@@ -65,8 +74,8 @@ const MyPlanContent = () => {
     );
   };
 
-    // Remove from Saved
-   
+
+
   const handleRemoveSave = (id: number) => {
     setSave(
       save.filter(
@@ -79,9 +88,8 @@ const MyPlanContent = () => {
     );
   };
 
-  
-    // Mark as Done
-   
+
+
   const handleDone = (id: number) => {
     setPlan(
       plan.filter(
@@ -94,11 +102,13 @@ const MyPlanContent = () => {
     );
   };
 
+
   return (
     <main className="min-h-screen bg-[#0b0c0f] px-5 py-10 text-white lg:px-8">
       <div className="mx-auto max-w-[1400px]">
 
-        {/*  HEADER  */}
+        {/* ================= HEADER ================= */}
+
         <div>
           <h1 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">
             MY PLAN
@@ -109,25 +119,27 @@ const MyPlanContent = () => {
           </p>
         </div>
 
-
         {/*  STATS  */}
+
         <div className="mt-7">
           <PlanStats
             workouts={currentList}
           />
         </div>
 
-
         {/*  TABS + SORT  */}
+
         <div className="mt-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 
           {/* Tabs */}
+
           <PlanTabs
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
 
-          {/* Sort Dropdown */}
+          {/* Sort */}
+
           <SortDropdown
             sortBy={sortBy}
             setSortBy={setSortBy}
@@ -135,11 +147,12 @@ const MyPlanContent = () => {
 
         </div>
 
-
         {/*  WORKOUT LIST  */}
+
         <div className="mt-5 space-y-3">
 
-          {/* EMPTY STATE  */}
+          {/*  EMPTY STATE  */}
+
           {sortedList.length === 0 && (
             <div className="rounded-xl border border-[#292d34] bg-[#15171c] px-5 py-16 text-center">
 
@@ -161,16 +174,17 @@ const MyPlanContent = () => {
             </div>
           )}
 
-
           {/*  CARDS  */}
-          {sortedList.map((muscle, ind) => (
+
+          {sortedList.map((muscle, index) => (
 
             <div
-              key={`${muscle.id}-${ind}`}
+              key={`${muscle.id}-${index}`}
               className="flex flex-col gap-5 rounded-xl border border-[#292d34] bg-[#15171c] p-4 transition hover:border-[#3b4048] md:flex-row md:items-center"
             >
 
-              {/* Image */}
+              {/*  IMAGE  */}
+
               <div className="relative h-24 w-full overflow-hidden rounded-lg md:h-20 md:w-28">
 
                 <Image
@@ -183,8 +197,8 @@ const MyPlanContent = () => {
 
               </div>
 
+              {/*  WORKOUT INFORMATION  */}
 
-              {/* Workout Information */}
               <div className="min-w-0 flex-1">
 
                 <h2 className="text-base font-black uppercase text-white">
@@ -195,11 +209,12 @@ const MyPlanContent = () => {
                   {muscle.equipment}
                 </p>
 
-
                 {/* Stats */}
+
                 <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-400">
 
                   {/* Duration */}
+
                   <span className="flex items-center gap-1">
                     <span className="text-[#ccff00]">
                       ◷
@@ -208,8 +223,8 @@ const MyPlanContent = () => {
                     {muscle.duration} min
                   </span>
 
-
                   {/* Calories */}
+
                   <span className="flex items-center gap-1">
                     <span className="text-[#ccff00]">
                       ♨
@@ -218,8 +233,8 @@ const MyPlanContent = () => {
                     {muscle.caloriesBurned} kcal
                   </span>
 
-
                   {/* Rating */}
+
                   <span className="flex items-center gap-1">
                     <span className="text-[#ccff00]">
                       ★
@@ -232,11 +247,12 @@ const MyPlanContent = () => {
 
               </div>
 
+              {/* ACTIONS  */}
 
-              {/*  ACTIONS  */}
               <div className="flex flex-wrap items-center gap-2">
 
                 {/* View Details */}
+
                 <Link
                   href={`/myplan/${muscle.id}`}
                   className="rounded-lg border border-[#30343b] px-4 py-2 text-xs font-medium text-gray-300 transition hover:border-gray-500 hover:text-white"
@@ -244,11 +260,12 @@ const MyPlanContent = () => {
                   View Details
                 </Link>
 
+                {/* TODAY'S PLAN  */}
 
-                {/*  TODAY'S PLAN  */}
                 {activeTab === "plan" && (
                   <>
                     {/* Mark as Done */}
+
                     <button
                       type="button"
                       onClick={() =>
@@ -259,14 +276,12 @@ const MyPlanContent = () => {
                       ✓ Mark as Done
                     </button>
 
-
                     {/* Remove */}
+
                     <button
                       type="button"
                       onClick={() =>
-                        handleRemovePlan(
-                          muscle.id
-                        )
+                        handleRemovePlan(muscle.id)
                       }
                       className="px-2 py-2 text-lg text-gray-500 transition hover:text-red-400"
                     >
@@ -275,15 +290,13 @@ const MyPlanContent = () => {
                   </>
                 )}
 
+                {/*  SAVED  */}
 
-                {/*  SAVED */}
                 {activeTab === "save" && (
                   <button
                     type="button"
                     onClick={() =>
-                      handleRemoveSave(
-                        muscle.id
-                      )
+                      handleRemoveSave(muscle.id)
                     }
                     className="px-2 py-2 text-lg text-gray-500 transition hover:text-red-400"
                   >
@@ -294,6 +307,7 @@ const MyPlanContent = () => {
               </div>
 
             </div>
+
           ))}
 
         </div>
